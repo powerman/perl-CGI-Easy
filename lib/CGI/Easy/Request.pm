@@ -55,7 +55,7 @@ sub new {
         $host = $1;
     }
     $host =~ s{:\d+\z}{}xms;
-    $path =~ s{\?.*}{}xms;
+    $path =~ s{[?].*}{}xms;
     $path = uri_unescape($path);  # WARNING nginx allow %2F, apache didn't
     if (!length $path) {
         $path = q{/};

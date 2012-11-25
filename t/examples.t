@@ -270,7 +270,7 @@ is $hdr[0], 'Status: 200 OK',                           'Status:';
 is $hdr[1], 'Content-Type: text/html; charset=utf-8',   'Content-Type:';
 like $hdr[2], qr/\ADate: /,                             'Date:';
 like $hdr[3], qr/\ASet-Cookie: sid=/,                   'Set=Cookie: sid';
-like $hdr[4], qr/\ASet-Cookie: perm=somename%20somevalue%20x%205; .*; expires=/, # XXX hardcoded hash key's order
+like $hdr[4], qr/\ASet-Cookie: perm=(?:somename%20somevalue%20x%205|x%205%20somename%20somevalue); .*; expires=/,
                                                         'Set=Cookie: perm';
 like $hdr[5], qr/\ASet-Cookie: temp=y%206; path=\//,    'Set=Cookie: temp';
 is $#hdr, 5,                                            '(no more headers)';

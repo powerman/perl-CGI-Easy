@@ -1,5 +1,8 @@
 Revision history for CGI-Easy
 
+1.0.1	Sun Nov 25 08:01:13 EET 2012
+	Fix tests for perl 5.17.
+
 1.0.0	Wed Nov 24 17:50:16 EET 2010
 	Initial public release.
 

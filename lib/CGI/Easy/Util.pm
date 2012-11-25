@@ -53,7 +53,7 @@ sub make_cookie :Export {
 
 sub uri_unescape_plus :Export {
     my ($s) = @_;
-    $s =~ s/\+/ /xmsg;
+    $s =~ s/[+]/ /xmsg;
     return uri_unescape($s);
 }
 

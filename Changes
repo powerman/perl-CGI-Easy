@@ -1,6 +1,7 @@
 Revision history for CGI-Easy
 
 {{$NEXT}}
+	- Switch from Perl6::Export::Attrs to Export::Attrs.
 
 1.0.1	2012-11-25 08:01:13 EET
 	- Fix tests for perl 5.17.

@@ -38,8 +38,8 @@
       "runtime" : {
          "requires" : {
             "Data::UUID" : "0",
+            "Export::Attrs" : "0",
             "MIME::Base64" : "0",
-            "Perl6::Export::Attrs" : "0",
             "URI::Escape" : "0",
             "perl" : "5.010001"
          }

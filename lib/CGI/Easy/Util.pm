@@ -7,7 +7,7 @@ use Carp;
 
 our $VERSION = 'v1.0.1';
 
-use Perl6::Export::Attrs;
+use Export::Attrs;
 use URI::Escape qw( uri_unescape uri_escape_utf8 );
 
 

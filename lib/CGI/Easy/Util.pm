@@ -75,66 +75,69 @@ sub burst_urlencoded :Export {
 #     Benjamin Franz <snowhare@nihongo.org>
 #     Copyright (c) Benjamin Franz. All rights reserved.
 sub burst_multipart :Export {
-    ## no critic
 	my ($buffer, $bdry) = @_;
 
 	# Special case boundaries causing problems with 'split'
-	if ($bdry =~ m#[^A-Za-z0-9',-./:=]#s) {
+	if ($bdry =~ m{[^A-Za-z0-9',-./:=]}ms) {                ## no critic (ProhibitEnumeratedClasses)
 		my $nbdry = $bdry;
-		$nbdry =~ s/([^A-Za-z0-9',-.\/:=])/ord($1)/egs;
-		my $quoted_boundary = quotemeta ($nbdry);
-		while ($buffer =~ m/$quoted_boundary/s) {
-			$nbdry .= chr(int(rand(25))+65);
-			$quoted_boundary = quotemeta ($nbdry);
+		$nbdry =~ s/([^A-Za-z0-9',-.\/:=])/ord($1)/msge;## no critic (ProhibitEnumeratedClasses)
+		my $quoted_boundary = quotemeta $nbdry;
+		while ($buffer =~ m/$quoted_boundary/ms) {
+			$nbdry .= chr(65 + int rand 25);        ## no critic (ProhibitParensWithBuiltins, ProhibitMagicNumbers)
+			$quoted_boundary = quotemeta $nbdry;
 		}
-		my $old_boundary = quotemeta($bdry);
-		$buffer =~ s/$old_boundary/$nbdry/gs;
+		my $old_boundary = quotemeta $bdry;
+		$buffer =~ s/$old_boundary/$nbdry/msg;
 		$bdry   = $nbdry;
 	}
 
-	$bdry = "--$bdry(--)?\015\012";
-	my @pairs = split(/$bdry/, $buffer);
+	$bdry = "--$bdry(--)?\r\n";
+	my @pairs = split /$bdry/ms, $buffer;
 
-    my (%param, %filename, %mimetype);
+        my (%param, %filename, %mimetype);
 	foreach my $pair (@pairs) {
-		next if (! defined $pair);
+		next if !defined $pair;
 		chop $pair; # Trailing \015 
 		chop $pair; # Trailing \012
-		last if ($pair eq "--");
-		next if (! $pair);
+		last if $pair eq q{--};
+		next if !$pair;
 
-		my ($header, $data) = split(/\015\012\015\012/s,$pair,2);
+		my ($header, $data) = split /\r\n\r\n/ms, $pair, 2;
 
 		# parse the header
-		$header =~ s/\015\012/\012/osg;
-		my @headerlines = split(/\012/so,$header);
+		$header =~ s/\r\n/\n/msg;
+		my @headerlines = split /\n/ms, $header;
 		my ($name, $filename, $mimetype);
 
 		foreach my $headfield (@headerlines) {
-			my ($fname,$fdata) = split(/: /,$headfield,2);
-			if ($fname =~ m/^Content-Type$/io) {
-				$mimetype=$fdata;
+			my ($fname, $fdata) = split /: /ms, $headfield, 2;
+			if (lc $fname eq 'content-type') {
+				$mimetype = $fdata;
 			}
-			if ($fname =~ m/^Content-Disposition$/io) {
-				my @dispositionlist = split(/; /,$fdata);
+			if (lc $fname eq 'content-disposition') {
+				my @dispositionlist = split /; /ms, $fdata;
 				foreach my $dispitem (@dispositionlist) {
-					next if ($dispitem eq 'form-data');
-					my ($dispfield,$dispdata) = split(/=/,$dispitem,2);
-					$dispdata =~ s/^\"//o;
-					$dispdata =~ s/\"$//o;
-					$name = $dispdata if ($dispfield eq 'name');
-					$filename = $dispdata if ($dispfield eq 'filename');
+					next if $dispitem eq 'form-data';
+					my ($dispfield,$dispdata) = split /=/ms, $dispitem, 2;
+					$dispdata =~ s/\A\"//ms;
+					$dispdata =~ s/\"\z//ms;
+					if ($dispfield eq 'name') {
+					        $name = $dispdata;
+					}
+					if ($dispfield eq 'filename') {
+        					$filename = $dispdata;
+        				}
 				}
 			}
 		}
-        next if !defined $name;
-        next if !defined $data;
+                next if !defined $name;
+                next if !defined $data;
 
-        push @{ $param{$name}    }, $data;
-        push @{ $filename{$name} }, $filename;
-        push @{ $mimetype{$name} }, $mimetype;
+                push @{ $param{$name}    }, $data;
+                push @{ $filename{$name} }, $filename;
+                push @{ $mimetype{$name} }, $mimetype;
 	}
-    return (\%param, \%filename, \%mimetype);
+        return (\%param, \%filename, \%mimetype);
 }
 
 
@@ -158,7 +161,7 @@ sub _unquote {
     return $s;
 }
 
-sub quote_list :Export {    ## no critic(RequireArgUnpacking)
+sub quote_list :Export {
     return join q{ }, map {_quote($_)} @_;
 }
 
@@ -174,7 +177,7 @@ sub unquote_list :Export {
     return \@w;
 }
 
-sub unquote_hash :Export {  ## no critic(RequireArgUnpacking)
+sub unquote_hash :Export {
     my $w = unquote_list(@_);
     return $w && $#{$w} % 2 ? { @{$w} } : undef;
 }
@@ -188,6 +191,11 @@ __END__
 =head1 NAME
 
 CGI::Easy::Util - low-level helpers for HTTP/CGI
+
+
+=head1 VERSION
+
+This document describes CGI::Easy::Util version v1.0.1
 
 
 =head1 SYNOPSIS
@@ -295,49 +303,59 @@ For non-file-upload parameters corresponding values in last two hashes
 =back
 
 
-=head1 BUGS AND LIMITATIONS
-
-No bugs have been reported.
-
-
 =head1 SUPPORT
 
-Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=CGI-Easy>.
-I will be notified, and then you'll automatically be notified of progress
-on your bug as I make changes.
+=head2 Bugs / Feature Requests
 
-You can also look for information at:
+Please report any bugs or feature requests through the issue tracker
+at L<https://github.com/powerman/perl-CGI-Easy/issues>.
+You will be notified automatically of any progress on your issue.
+
+=head2 Source Code
+
+This is open source software. The code repository is available for
+public review and contribution under the terms of the license.
+Feel free to fork the repository and submit pull requests.
+
+L<https://github.com/powerman/perl-CGI-Easy>
+
+    git clone https://github.com/powerman/perl-CGI-Easy.git
+
+=head2 Resources
 
 =over
 
-=item * RT: CPAN's request tracker
+=item * MetaCPAN Search
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=CGI-Easy>
+L<https://metacpan.org/search?q=CGI-Easy>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/dist/CGI-Easy>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
 L<http://annocpan.org/dist/CGI-Easy>
 
-=item * CPAN Ratings
+=item * CPAN Testers Matrix
 
-L<http://cpanratings.perl.org/d/CGI-Easy>
+L<http://matrix.cpantesters.org/?dist=CGI-Easy>
 
-=item * Search CPAN
+=item * CPANTS: A CPAN Testing Service (Kwalitee)
 
-L<http://search.cpan.org/dist/CGI-Easy/>
+L<http://cpants.cpanauthors.org/dist/CGI-Easy>
 
 =back
 
 
 =head1 AUTHOR
 
-Alex Efros  C<< <powerman-asdf@ya.ru> >>
+Alex Efros E<lt>powerman@cpan.orgE<gt>
 
 
-=head1 LICENSE AND COPYRIGHT
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2009-2010 Alex Efros <powerman-asdf@ya.ru>.
+This software is Copyright (c) 2009-2010 by Alex Efros E<lt>powerman@cpan.orgE<gt>.
 
 This module also include some code derived from
 
@@ -350,27 +368,9 @@ Copyright (c) Benjamin Franz. All rights reserved.
 
 =back
 
-This program is distributed under the MIT (X11) License:
-L<http://www.opensource.org/licenses/mit-license.php>
+This is free software, licensed under:
 
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
+  The MIT (X11) License
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
+=cut

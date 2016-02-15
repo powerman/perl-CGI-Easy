@@ -18,6 +18,11 @@ __END__
 CGI::Easy - simple and straightforward helpers to make CGI easy
 
 
+=head1 VERSION
+
+This document describes CGI::Easy version v1.0.1
+
+
 =head1 SYNOPSIS
 
     use CGI::Easy::Request;
@@ -331,71 +336,63 @@ L<CGI::Easy::URLconf>,
 L<CGI::Easy::SendFile>.
 
 
-=head1 BUGS AND LIMITATIONS
-
-No bugs have been reported.
-
-
 =head1 SUPPORT
 
-Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=CGI-Easy>.
-I will be notified, and then you'll automatically be notified of progress
-on your bug as I make changes.
+=head2 Bugs / Feature Requests
 
-You can also look for information at:
+Please report any bugs or feature requests through the issue tracker
+at L<https://github.com/powerman/perl-CGI-Easy/issues>.
+You will be notified automatically of any progress on your issue.
+
+=head2 Source Code
+
+This is open source software. The code repository is available for
+public review and contribution under the terms of the license.
+Feel free to fork the repository and submit pull requests.
+
+L<https://github.com/powerman/perl-CGI-Easy>
+
+    git clone https://github.com/powerman/perl-CGI-Easy.git
+
+=head2 Resources
 
 =over
 
-=item * RT: CPAN's request tracker
+=item * MetaCPAN Search
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=CGI-Easy>
+L<https://metacpan.org/search?q=CGI-Easy>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/dist/CGI-Easy>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
 L<http://annocpan.org/dist/CGI-Easy>
 
-=item * CPAN Ratings
+=item * CPAN Testers Matrix
 
-L<http://cpanratings.perl.org/d/CGI-Easy>
+L<http://matrix.cpantesters.org/?dist=CGI-Easy>
 
-=item * Search CPAN
+=item * CPANTS: A CPAN Testing Service (Kwalitee)
 
-L<http://search.cpan.org/dist/CGI-Easy/>
+L<http://cpants.cpanauthors.org/dist/CGI-Easy>
 
 =back
 
 
 =head1 AUTHOR
 
-Alex Efros  C<< <powerman-asdf@ya.ru> >>
+Alex Efros E<lt>powerman@cpan.orgE<gt>
 
 
-=head1 LICENSE AND COPYRIGHT
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2009-2010 Alex Efros <powerman-asdf@ya.ru>.
+This software is Copyright (c) 2009-2010 by Alex Efros E<lt>powerman@cpan.orgE<gt>.
 
-This program is distributed under the MIT (X11) License:
-L<http://www.opensource.org/licenses/mit-license.php>
+This is free software, licensed under:
 
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
+  The MIT (X11) License
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
+=cut

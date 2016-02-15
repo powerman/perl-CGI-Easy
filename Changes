@@ -1,6 +1,8 @@
 Revision history for CGI-Easy
 
 {{$NEXT}}
+
+v1.0.1  2016-02-15 22:12:17 EET
 	- Switch from Perl6::Export::Attrs to Export::Attrs.
 
 1.0.1	2012-11-25 08:01:13 EET

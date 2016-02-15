@@ -1,12 +1,12 @@
 package CGI::Easy::Util;
-
+use 5.010001;
 use warnings;
 use strict;
+use utf8;
 use Carp;
 
-use version; our $VERSION = qv('1.0.0');    # REMINDER: update Changes
+our $VERSION = 'v1.0.1';
 
-# REMINDER: update dependencies in Makefile.PL
 use Perl6::Export::Attrs;
 use URI::Escape qw( uri_unescape uri_escape_utf8 );
 

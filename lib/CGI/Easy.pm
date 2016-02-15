@@ -1,13 +1,11 @@
 package CGI::Easy;
-
+use 5.010001;
 use warnings;
 use strict;
+use utf8;
 use Carp;
 
-use version; our $VERSION = qv('1.0.1');    # REMINDER: update Changes
-
-# REMINDER: update dependencies in Makefile.PL
-use 5.008;
+our $VERSION = 'v1.0.1';
 
 
 1; # Magic true value required at end of module

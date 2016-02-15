@@ -1,12 +1,12 @@
 package CGI::Easy::Headers;
-
+use 5.010001;
 use warnings;
 use strict;
+use utf8;
 use Carp;
 
-use version; our $VERSION = qv('1.0.0');    # REMINDER: update Changes
+our $VERSION = 'v1.0.1';
 
-# REMINDER: update dependencies in Makefile.PL
 use CGI::Easy::Util qw( date_http make_cookie );
 
 

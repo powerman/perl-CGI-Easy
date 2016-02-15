@@ -62,23 +62,23 @@
    "provides" : {
       "CGI::Easy" : {
          "file" : "lib/CGI/Easy.pm",
-         "version" : "v1.0.1"
+         "version" : "v2.0.0"
       },
       "CGI::Easy::Headers" : {
          "file" : "lib/CGI/Easy/Headers.pm",
-         "version" : "v1.0.1"
+         "version" : "v2.0.0"
       },
       "CGI::Easy::Request" : {
          "file" : "lib/CGI/Easy/Request.pm",
-         "version" : "v1.0.1"
+         "version" : "v2.0.0"
       },
       "CGI::Easy::Session" : {
          "file" : "lib/CGI/Easy/Session.pm",
-         "version" : "v1.0.1"
+         "version" : "v2.0.0"
       },
       "CGI::Easy::Util" : {
          "file" : "lib/CGI/Easy/Util.pm",
-         "version" : "v1.0.1"
+         "version" : "v2.0.0"
       }
    },
    "release_status" : "stable",
@@ -93,6 +93,6 @@
          "web" : "https://github.com/powerman/perl-CGI-Easy"
       }
    },
-   "version" : "v1.0.1"
+   "version" : "v2.0.0"
 }
 

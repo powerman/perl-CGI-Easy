@@ -7,7 +7,7 @@ CGI::Easy - simple and straightforward helpers to make CGI easy
 
 # VERSION
 
-This document describes CGI::Easy version v1.0.1
+This document describes CGI::Easy version v2.0.0
 
 # SYNOPSIS
 

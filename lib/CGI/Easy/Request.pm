@@ -5,7 +5,7 @@ use strict;
 use utf8;
 use Carp;
 
-our $VERSION = 'v1.0.1';
+our $VERSION = 'v2.0.0';
 
 use CGI::Easy::Util qw( uri_unescape_plus burst_urlencoded burst_multipart );
 use URI::Escape qw( uri_unescape );
@@ -227,7 +227,7 @@ CGI::Easy::Request - parse CGI params
 
 =head1 VERSION
 
-This document describes CGI::Easy::Request version v1.0.1
+This document describes CGI::Easy::Request version v2.0.0
 
 
 =head1 SYNOPSIS

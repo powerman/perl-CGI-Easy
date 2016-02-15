@@ -5,7 +5,7 @@ use strict;
 use utf8;
 use Carp;
 
-our $VERSION = 'v1.0.1';
+our $VERSION = 'v2.0.0';
 
 
 1; # Magic true value required at end of module
@@ -20,7 +20,7 @@ CGI::Easy - simple and straightforward helpers to make CGI easy
 
 =head1 VERSION
 
-This document describes CGI::Easy version v1.0.1
+This document describes CGI::Easy version v2.0.0
 
 
 =head1 SYNOPSIS

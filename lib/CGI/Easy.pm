@@ -238,7 +238,6 @@ provided by CGI::Easy::Headers->new().
         printf "<p>You browser doesn't support cookies</p>\n";
     }
 
-
 =head2 FCGI with cookies
 
     use FCGI;
@@ -388,7 +387,7 @@ Alex Efros E<lt>powerman@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2009-2010 by Alex Efros E<lt>powerman@cpan.orgE<gt>.
+This software is Copyright (c) 2009- by Alex Efros E<lt>powerman@cpan.orgE<gt>.
 
 This is free software, licensed under:
 

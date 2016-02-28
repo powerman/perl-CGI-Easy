@@ -128,9 +128,9 @@ shouldn't use cookies with these names if you using this module.
 
 =head1 INTERFACE
 
-=over
+=head2 new
 
-=item new( $r, $h )
+    $sess = CGI::Easy::Session->new($r, $h);
 
 Take $r (CGI::Easy::Request object) and $h (CGI::Easy::Headers object)
 and create new CGI::Easy::Session object with these public fields:
@@ -152,8 +152,9 @@ expire in 1 YEAR after last visit.
 
 Return created CGI::Easy::Session object.
 
+=head2 save
 
-=item save()
+    $sess->save();
 
 Set/update 'Set-Cookie' header with current {perm} and {temp} values.
 Should be called before sending reply to user (with C<< $h->compose() >>)
@@ -163,9 +164,6 @@ Cookie "perm" (with hash {perm} data) will expire in 1 YEAR after last visit.
 Cookie "temp" (with hash {temp} data) will expire when browser will be closed.
 
 Return nothing.
-
-
-=back
 
 
 =head1 SUPPORT
@@ -220,7 +218,7 @@ Alex Efros E<lt>powerman@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2009-2010 by Alex Efros E<lt>powerman@cpan.orgE<gt>.
+This software is Copyright (c) 2009- by Alex Efros E<lt>powerman@cpan.orgE<gt>.
 
 This is free software, licensed under:
 

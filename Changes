@@ -1,6 +1,7 @@
 Revision history for CGI-Easy
 
 {{$NEXT}}
+	- Reformat doc.
 
 v2.0.0  2016-02-15 22:51:07 EET
 	- Bump version.

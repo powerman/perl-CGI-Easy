@@ -144,7 +144,7 @@ output all headers from this object/hash you should call compose() method,
 and it will return string with all HTTP headers suitable for sending to
 browser.
 
-There one exception: value for key 'Set-Cookie' is ARRAYREF with HASHREFs,
+There one exception: value for key 'Set-Cookie' is ARRAYREF with HASHREF,
 where each HASHREF keep cookie details:
 
     $h->{'Set-Cookie'} = [

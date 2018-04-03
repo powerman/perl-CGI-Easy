@@ -5,7 +5,7 @@ use strict;
 use utf8;
 use Carp;
 
-our $VERSION = 'v2.0.0';
+our $VERSION = 'v2.0.1';
 
 use Data::UUID;
 use CGI::Easy::Util qw( quote_list unquote_hash );
@@ -88,7 +88,7 @@ CGI::Easy::Session - Support unique session ID and session data in cookies
 
 =head1 VERSION
 
-This document describes CGI::Easy::Session version v2.0.0
+This document describes CGI::Easy::Session version v2.0.1
 
 
 =head1 SYNOPSIS

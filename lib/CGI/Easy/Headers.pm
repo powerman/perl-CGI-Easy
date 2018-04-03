@@ -5,7 +5,7 @@ use strict;
 use utf8;
 use Carp;
 
-our $VERSION = 'v2.0.0';
+our $VERSION = 'v2.0.1';
 
 use CGI::Easy::Util qw( date_http make_cookie );
 
@@ -95,7 +95,7 @@ CGI::Easy::Headers - Manage HTTP headers
 
 =head1 VERSION
 
-This document describes CGI::Easy::Headers version v2.0.0
+This document describes CGI::Easy::Headers version v2.0.1
 
 
 =head1 SYNOPSIS

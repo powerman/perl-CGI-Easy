@@ -7,7 +7,7 @@ CGI::Easy - simple and straightforward helpers to make CGI easy
 
 # VERSION
 
-This document describes CGI::Easy version v2.0.0
+This document describes CGI::Easy version v2.0.1
 
 # SYNOPSIS
 
@@ -127,7 +127,7 @@ CGI::Easy consist of three main parts:
     and it will return string with all HTTP headers suitable for sending to
     browser.
 
-    There one exception: value for key 'Set-Cookie' is ARRAYREF with HASHREFs,
+    There one exception: value for key 'Set-Cookie' is ARRAYREF with HASHREF,
     where each HASHREF keep cookie details:
 
         $h->{'Set-Cookie'} = [
@@ -354,11 +354,11 @@ Feel free to fork the repository and submit pull requests.
 
 # AUTHOR
 
-Alex Efros &lt;powerman@cpan.org>
+Alex Efros <powerman@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2009- by Alex Efros &lt;powerman@cpan.org>.
+This software is Copyright (c) 2009- by Alex Efros <powerman@cpan.org>.
 
 This is free software, licensed under:
 
